@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Nodo.h"
 
-Nodo::Nodo(int key, int value)
+Nodo::Nodo(int key, Bodega* value)
 {
     this->key = key;
     this->value = value;

@@ -1,9 +1,11 @@
 #include <iostream>
+#include "Bodega.h"
+
 class Nodo 
 {
     public: 
         int key;
-        int value;
+        Bodega* value;
         Nodo* next;
-        Nodo(int key, int value);
+        Nodo(int key, Bodega* value);
 };
