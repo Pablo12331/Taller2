@@ -1,11 +1,11 @@
 #include <iostream>
-#include "Bodega.h"
+#include "Producto.h"
 
 class Nodo 
 {
     public: 
         int key;
-        Bodega* value;
+        Producto* value;
         Nodo* next;
-        Nodo(int key, Bodega* value);
+        Nodo(int key, Producto* value);
 };
