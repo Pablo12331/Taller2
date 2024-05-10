@@ -1,6 +1,7 @@
+#pragma once
 #include <iostream>
 #include "Nodo.h"
-#include "Bodega.h"
+#include "Producto.h"
 class HashMap
 {
     private:
@@ -14,8 +15,8 @@ class HashMap
         void rehash();
     public:
         HashMap(double maxLoadFactor = 0.75);
-        void insert(int key, Bodega* value);
-        Bodega* get(int key);
+        void insert(int key, Producto* value);
+        Producto* get(int key);
         void erase(int key);
         int getNumberOfElements();
 };

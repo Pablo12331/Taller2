@@ -46,7 +46,7 @@ HashMap::HashMap(double maxLoadFactor = 0.75)
     table.resize(tableSize, nullptr);
 }
 
-void HashMap::insert(int key, Bodega* value) 
+void HashMap::insert(int key, Producto* value) 
 {
     int index = hashFunction(key);
     Nodo* newNode = new Nodo(key, value);
@@ -75,7 +75,7 @@ void HashMap::insert(int key, Bodega* value)
     }
 }
 
-Bodega* HashMap::get(int key) 
+Producto* HashMap::get(int key) 
 {
     int index = hashFunction(key);
     Nodo* curr = table[index];
