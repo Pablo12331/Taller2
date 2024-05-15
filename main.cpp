@@ -17,10 +17,9 @@ int menu()
         cout << "\n--- Menú ---\n";
         cout << "1. Entregar número de cliente\n";
         cout << "2. Llamar al siguiente cliente\n";
-        cout << "3. Ingresar cliente a cola\n";
-        cout << "4. Agregar productos a bodega\n";
-        cout << "5. Generar boleta de venta\n";
-        cout << "6. Salir\n";
+        cout << "3. Agregar productos a bodega\n";
+        cout << "4. Generar boleta de venta\n";
+        cout << "5. Salir\n";
         cout << "Ingrese una opción: ";
         cin >> opcion;
 
@@ -32,15 +31,12 @@ int menu()
                 // Método para llamar al siguiente cliente
                 break;
             case 3:
-                // Método para ingresar cliente a cola
-                break;
-            case 4:
                 // Método para agregar productos a bodega
                 break;
-            case 5:
+            case 4:
                 // Método para generar boleta de venta
                 break;
-            case 6:
+            case 5:
                 cout << "Saliendo del programa...\n";
                 break;
             default:
