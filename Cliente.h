@@ -5,12 +5,15 @@ using namespace std;
 class Cliente
 {
     private:
-        string tipoCliente, datoDiferenciador, numeroAtencion;
+        string tipoCliente;
+        int numeroAtencion;
         queue<Cliente> clientes;
         queue<Cliente> clientesPreferenciales;
-        
+
     public:
-        Cliente(string, string, string);
+        Cliente(string, int);
         Cliente* registroClientes(string);
-        
+        void ordenarClientes(queue<Cliente>);
+        int getNumeroAtencion();
+        string getTipoCliente();
 };
