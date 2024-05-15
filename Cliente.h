@@ -12,7 +12,7 @@ class Cliente
 
     public:
         Cliente(string, int);
-        Cliente* registroClientes(string);
+        Cliente* registroClientes(string = "a");
         void ordenarClientes(queue<Cliente>);
         int getNumeroAtencion();
         string getTipoCliente();

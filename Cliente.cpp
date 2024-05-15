@@ -10,7 +10,7 @@ Cliente::Cliente(string tipoCliente, int numeroAtencion)
 
 Cliente* Cliente::registroClientes(string datosCliente)
 {
-
+    
 }
 
 void Cliente::ordenarClientes(queue<Cliente> clientes)
