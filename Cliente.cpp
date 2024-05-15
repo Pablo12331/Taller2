@@ -8,7 +8,7 @@ Cliente::Cliente(string tipoCliente, string datoDiferenciador, string numeroAten
     this ->numeroAtencion = numeroAtencion;
 } 
 
-Cliente Cliente::registroClientes(string datosCliente)
+Cliente* Cliente::registroClientes(string datosCliente)
 {
 
 }

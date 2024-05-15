@@ -7,5 +7,5 @@ class Cliente
         string tipoCliente, datoDiferenciador, numeroAtencion;
     public:
         Cliente(string, string, string);
-        Cliente registroClientes(string);
+        Cliente* registroClientes(string);
 };
