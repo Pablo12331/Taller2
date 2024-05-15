@@ -19,5 +19,5 @@ class Cliente
         void ordenarClientes(queue<Cliente>);
         int getNumeroAtencion();
         string getTipoCliente();
-        void rellenarListaCompras(queue<int>);
+        void rellenarListaCompras();
 };
