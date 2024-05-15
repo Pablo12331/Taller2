@@ -16,7 +16,7 @@ int menu()
     do {
         cout << "\n--- Menú ---\n";
         cout << "1. Entregar número de cliente\n";
-        cout << "2. Llamar al siguiente cliente\n";
+        cout << "2. Atender cliente\n";
         cout << "3. Agregar productos a bodega\n";
         cout << "4. Generar boleta de venta\n";
         cout << "5. Salir\n";
