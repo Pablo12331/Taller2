@@ -2,6 +2,8 @@
 #include <vector>
 #include "HashMap.h"
 #include "Nodo.h"
+#include "Producto.h"
+
 using namespace std;
 
 void HashMap::rehash() 
@@ -39,7 +41,7 @@ void HashMap::rehash()
     table.swap(newTable);
     tableSize = newTableSize;
 }
-HashMap::HashMap(double maxLoadFactor = 0.75) 
+HashMap::HashMap(double maxLoadFactor) 
 {
     this->tableSize = 10;
     this->maxLoadFactor = maxLoadFactor;

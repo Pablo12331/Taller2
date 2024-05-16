@@ -35,15 +35,15 @@ Producto* Producto::ingresarProductos(string datosProducto)
 
 void Producto::setCantidadProducto()
 {
-
+    cout<<this->cantidadProducto<<endl;
 }
 
 Producto* Producto::agregarProducto()
 {
-
+    return nullptr;
 }
 
 Producto* Producto::productoRandom()
 {
-    
+    return nullptr;
 }

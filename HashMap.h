@@ -3,6 +3,9 @@
 #include <vector>
 #include "Nodo.h"
 #include "Producto.h"
+
+using namespace std;
+
 class HashMap
 {
     private:

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Nodo.h"
+#include "Producto.h"
 
 Nodo::Nodo(int key, Producto* value)
 {

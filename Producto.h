@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "HashMap.h"
 using namespace std;
 
 class Producto
@@ -16,5 +15,4 @@ class Producto
         void setCantidadProducto();
         Producto* agregarProducto();
         Producto* productoRandom();
-        HashMap* getBodega();
 };
