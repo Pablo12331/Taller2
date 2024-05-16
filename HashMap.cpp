@@ -6,44 +6,41 @@
 
 using namespace std;
 
-void HashMap::rehash() 
-{
+void HashMap::rehash() {
     int newTableSize = tableSize * 2;
     vector<Nodo*> newTable(newTableSize, nullptr);
 
-    for (int i = 0; i < tableSize; i++) 
-    {
+    for (int i = 0; i < tableSize; i++) {
         Nodo* curr = table[i];
-        while (curr != nullptr) 
-        {
+        while (curr != nullptr) {
             int index = hashFunction(curr->key) % newTableSize;
             Nodo* newNode = new Nodo(curr->key, curr->value);
 
-            if (newTable[index] == nullptr) 
-            {
+            // Insertar newNode mientras se conservan las claves más grandes
+            Nodo* prev = nullptr;
+            Nodo* next = newTable[index];
+            while (next != nullptr && next->key > curr->key) { // Buscar clave más grande
+                prev = next;
+                next = next->next;
+            }
+
+            if (prev == nullptr) { // Bucket vacío o clave más pequeña
                 newTable[index] = newNode;
-            } 
-            else 
-            {
-                Nodo* prev = nullptr;
-                Nodo* next = newTable[index];
-                while (next != nullptr) 
-                {
-                    prev = next;
-                    next = next->next;
-                }
+            } else {
                 prev->next = newNode;
             }
+            newNode->next = next; // Mantener el orden original de la lista enlazada
 
             curr = curr->next;
         }
     }
+
     table.swap(newTable);
     tableSize = newTableSize;
 }
 HashMap::HashMap(double maxLoadFactor) 
 {
-    this->tableSize = 10;
+    this->tableSize = 1000;
     this->maxLoadFactor = maxLoadFactor;
     table.resize(tableSize, nullptr);
 }

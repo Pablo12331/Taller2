@@ -104,9 +104,9 @@ void cargarDatos(HashMap* bodega)
     while(getline(datosProductos, linea))
     {
         Producto* producto = aux->ingresarProductos(linea);
-        bodega->insert(producto->getIdProducto(), producto);
+        int id = producto->getIdProducto();
+        bodega->insert(id, producto);
     }
-
     datosProductos.close();
 }
 
@@ -114,6 +114,7 @@ void farmacia()
 {
     HashMap* bodega = new HashMap();
     cargarDatos(bodega);
+    cout<<bodega->getNumberOfElements()<<endl;
     //menu();
 }
 
