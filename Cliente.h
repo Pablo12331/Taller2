@@ -17,6 +17,7 @@ class Cliente
         Cliente(string, int);
         Cliente* registroClientes(string);
         void ordenarClientes(queue<Cliente>);
+        void ordenarClientesPreferenciales(queue<Cliente>);
         int getNumeroAtencion();
         string getTipoCliente();
         void rellenarListaCompras();
