@@ -2,6 +2,7 @@
 #include "Cliente.h"
 #include "Producto.h"
 #include "HashMap.h"
+#include <fstream>
 
 using namespace std;
 
@@ -92,15 +93,27 @@ int menu()
 
 void cargarDatos(HashMap* bodega)
 {
-    Producto* a = new Producto("a","b","c",4,5,6);
-    bodega->insert(1,a);
+    Producto* aux;
+    
+    string linea;
+
+    ifstream datosProductos("Productos.txt");
+
+    if(datosProductos.fail()){cout<<"ERROR! no se pudo leer el archivo de productos."; exit(1);}
+
+    while(getline(datosProductos, linea))
+    {
+        Producto* producto = aux->ingresarProductos(linea);
+        bodega->insert(producto->getIdProducto(), producto);
+    }
+
+    datosProductos.close();
 }
 
 void farmacia()
 {
     HashMap* bodega = new HashMap();
     cargarDatos(bodega);
-    bodega->get(1)->setCantidadProducto();
     //menu();
 }
 

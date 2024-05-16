@@ -8,6 +8,8 @@ Cliente::Cliente(string tipoCliente, int numeroAtencion)
     this ->numeroAtencion = numeroAtencion;
 } 
 
+Cliente::~Cliente(){}
+
 Cliente* Cliente::registroClientes(string datosCliente)
 {
     

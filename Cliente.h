@@ -15,6 +15,7 @@ class Cliente
 
     public:
         Cliente(string, int);
+        ~Cliente();
         Cliente* registroClientes(string);
         void ordenarClientes(queue<Cliente>);
         void ordenarClientesPreferenciales(queue<Cliente>);

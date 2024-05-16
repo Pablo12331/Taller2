@@ -1,0 +1,30 @@
+Medicamentos,Analgésicos y Antipiréticos,Paracetamol 500mg,500,9718,100
+Medicamentos,Analgésicos y Antipiréticos,Ibuprofeno 400mg,700,7856,100
+Medicamentos,Analgésicos y Antipiréticos,Ácido Acetilsalicílico 500mg,300,8271,100
+Medicamentos,Antibióticos,Amoxicilina 500mg,1200,5581,100
+Medicamentos,Antibióticos,Azitromicina 250mg,1500,1607,100
+Medicamentos,Antibióticos,Ciprofloxacino 500mg,1800,6985,100
+Vitaminas y Suplementos,Vitaminas,Vitamina C 1000mg,800,8585,100
+Vitaminas y Suplementos,Vitaminas,Vitamina D 1000 UI,1000,5266,100
+Vitaminas y Suplementos,Vitaminas,Complejo B 100mg,600,1025,100
+Vitaminas y Suplementos,Minerales,Calcio 500mg,500,9643,100
+Vitaminas y Suplementos,Minerales,Hierro 65mg,700,5645,100
+Vitaminas y Suplementos,Minerales,Magnesio 400mg,600,3662,100
+Productos de Cuidado Personal,Cuidado de la piel,Crema hidratante facial,1500,5758,100
+Productos de Cuidado Personal,Cuidado de la piel,Jabón facial,800,1332,100
+Productos de Cuidado Personal,Cuidado de la piel,Protector solar SPF 50,2000,4539,100
+Productos de Cuidado Personal,Cuidado del cabello,Champú anticaspa,1000,3188,100
+Productos de Cuidado Personal,Cuidado del cabello,Acondicionador,800,9774,100
+Productos de Cuidado Personal,Cuidado del cabello,Gel fijador,600,5267,100
+Productos para Bebés,Leche de fórmula,Leche de fórmula etapa 1,1800,7147,100
+Productos para Bebés,Leche de fórmula,Leche de fórmula etapa 2,2000,4340,100
+Productos para Bebés,Leche de fórmula,Leche de fórmula etapa 3,2200,3975,100
+Productos para Bebés,Pañales,Pañales talla M,1500,4206,100
+Productos para Bebés,Pañales,Pañales talla G,1700,9980,100
+Productos para Bebés,Pañales,Toallitas húmedas,800,7589,100
+Productos de Primeros Auxilios,Vendajes,Venda elástica 5cm x 5m,500,9587,100
+Productos de Primeros Auxilios,Vendajes,Venda adhesiva 10cm x 10m,700,6928,100
+Productos de Primeros Auxilios,Vendajes,Apósitos estériles,300,9998,100
+Productos de Primeros Auxilios,Antisépticos,Alcohol isopropílico 70%,800,3673,100
+Productos de Primeros Auxilios,Antisépticos,Agua oxigenada 10 volúmenes,600,6241,100
+Productos de Primeros Auxilios,Antisépticos,Povidona yodada 10%,1000,2470,100

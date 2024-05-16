@@ -11,8 +11,10 @@ class Producto
     public:
      
         Producto(string, string, string, int, int, int);
+        ~Producto();
         Producto* ingresarProductos(string);
         void setCantidadProducto();
         Producto* agregarProducto();
         Producto* productoRandom();
+        int getIdProducto();
 };

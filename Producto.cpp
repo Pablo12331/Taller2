@@ -33,6 +33,8 @@ Producto* Producto::ingresarProductos(string datosProducto)
     return productoIngresar;
 }
 
+Producto::~Producto(){}
+
 void Producto::setCantidadProducto()
 {
     cout<<this->cantidadProducto<<endl;
@@ -46,4 +48,9 @@ Producto* Producto::agregarProducto()
 Producto* Producto::productoRandom()
 {
     return nullptr;
+}
+
+int Producto::getIdProducto()
+{
+    return this->idProducto;
 }
