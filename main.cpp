@@ -79,7 +79,7 @@ int ingresarClientes(Cliente* aux,int contComun,int contPref)
                 //aquí se añade el nuevo cliente a la lista de preferenciales en el auxiliar (porfavor hacelo pablo q todavía no sé hashmap dou)
                 break;
             }
-            cout<<""<<endl;
+            cout<<"Respuesta errónea, intentelo de nuevo:"<<endl;
         }
     }
     return 0;
