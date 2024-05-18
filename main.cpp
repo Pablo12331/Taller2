@@ -45,6 +45,23 @@ using namespace std;
 
 int atenderCliente(Cliente* aux)
 {
+    if(aux->getClientes().empty() && aux->getClientesPreferenciales().empty())
+    {
+        cout<<"No hay clientes en la fila."<<endl;
+    }
+    else if(!aux->getClientesPreferenciales().empty())
+    {
+        aux->separarClientesPreferenciales(aux->getClientesPreferenciales());
+        
+        
+        
+        return 0;
+    }
+    else if(!aux->getClientes().empty())
+    {
+        
+    }
+
     //condicional que pregunta si hay elementos en alguna lista, si no lo hay, tira un mensaje diciendo que no hay personas en la cola y se termina el método.
     //condicional que pregunta si hay elementos en preferencial, si los hay: aux->ordenarClientesPreferenciales(aux->clientesPreferenciales). 
     //otro condicional que no depende del anterior, que pregunta si hay clientes en estándar, si los hay: aux->ordenarClientes(aux->clientes).

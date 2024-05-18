@@ -23,4 +23,6 @@ class Cliente
         int getNumeroAtencion();
         string getTipoCliente();
         void rellenarListaCompras();
+        queue<Cliente*> getClientes();
+        queue<Cliente*> getClientesPreferenciales();
 };

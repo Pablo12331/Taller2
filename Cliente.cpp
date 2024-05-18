@@ -175,3 +175,11 @@ int Cliente::getNumeroAtencion()
 {
     return this->numeroAtencion;
 }
+queue<Cliente*> Cliente::getClientes()
+{
+    return this->clientes;
+}
+queue<Cliente*> Cliente::getClientesPreferenciales()
+{
+    return this->clientesPreferenciales;
+}
