@@ -166,6 +166,16 @@ void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
     delete(aux);    
 }
 
+void Cliente::atenderCliente(queue<Cliente*> fila)
+{
+    Cliente* cliente = fila.front();
+
+    //Proceso de atención.
+
+    fila.pop();
+    delete(cliente);
+}
+
 string Cliente::getTipoCliente()
 {
     return this->tipoCliente;

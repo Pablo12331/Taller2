@@ -52,14 +52,13 @@ int atenderCliente(Cliente* aux)
     else if(!aux->getClientesPreferenciales().empty())
     {
         aux->separarClientesPreferenciales(aux->getClientesPreferenciales());
-        
-        
+        aux->atenderCliente(aux->getClientesPreferenciales());
         
         return 0;
     }
     else if(!aux->getClientes().empty())
     {
-        
+        aux->atenderCliente(aux->getClientes());
     }
 
     //condicional que pregunta si hay elementos en alguna lista, si no lo hay, tira un mensaje diciendo que no hay personas en la cola y se termina el método.
