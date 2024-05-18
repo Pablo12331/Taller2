@@ -12,6 +12,7 @@ using namespace std;
 //     cout<<"Ingrese la cantidad de clientes que ingresaron: "<<endl;
 //     cin>>cant;
 //     int opcion;
+
 //     for(int i = 0;i<cant ;i++)
 //     {
 
@@ -58,15 +59,15 @@ int menu()
     int opcion;
 
     do {
-        cout << "\n--- Menú ---\n";
+        cout << "\n|--- Menú ---|\n";
         cout << "1. Entregar número de cliente\n";
         cout << "2. Atender cliente\n";
         cout << "3. Agregar productos a bodega\n";
         cout << "4. Generar boleta de venta\n";
         cout << "5. Salir\n";
-        cout << "Ingrese una opción: ";
+        cout << "Ingrese una opción(Ejemplo: 1): ";
         cin >> opcion;
-
+        cout<<endl;
         switch(opcion) {
             case 1:
                 //ingresarClientes(aux,contComun,contPref);
@@ -86,12 +87,12 @@ int menu()
             default:
                 cout << "Opción no válida. Por favor, ingrese una opción válida.\n";
         }
-    } while(opcion != 6);
+    } while(opcion != 5);
 
     return 0;
 }
 
-void cargarDatos(HashMap* bodega)
+void cargarDatosBodega(HashMap* bodega)
 {
     Producto* aux;
     
@@ -110,11 +111,18 @@ void cargarDatos(HashMap* bodega)
     datosProductos.close();
 }
 
+void suma(int &a)
+{
+    a++;
+}
+
 void farmacia()
 {
+    int a = 1;
+    suma(a);
+    cout<<a<<endl; 
     HashMap* bodega = new HashMap();
-    cargarDatos(bodega);
-    cout<<bodega->getNumberOfElements()<<endl;
+    cargarDatosBodega(bodega);
     //menu();
 }
 
