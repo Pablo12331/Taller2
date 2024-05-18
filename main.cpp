@@ -53,9 +53,9 @@ int atenderCliente(Cliente* aux)
 
 int menu()
 {
-    Cliente* aux;
-    int* contComun = 0;
-    int* contPref = 0;
+    Cliente* filas;
+    int contNoPreferencial = 0;
+    int contPreferencial = 0;
     int opcion;
 
     do {
@@ -70,10 +70,10 @@ int menu()
         cout<<endl;
         switch(opcion) {
             case 1:
-                //ingresarClientes(aux,contComun,contPref);
+                filas->registroClientes(contPreferencial, contNoPreferencial);
                 break;
             case 2:
-                atenderCliente(aux);
+                atenderCliente(filas);
                 break;
             case 3:
                 // Método para agregar productos a bodega
