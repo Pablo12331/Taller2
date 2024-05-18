@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <stack>
 #include "Cliente.h"
 
 Cliente::Cliente(string tipoCliente, int numeroAtencion)
@@ -78,6 +79,7 @@ Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
 void Cliente::separarClientesPreferenciales(queue<Cliente*> clientes)
 {
     queue<Cliente*> terceraEdad, discapacitados, embarazadas;
+    
     while(!clientes.empty())
     {
         if(clientes.front()->getTipoCliente() == "Tercera edad")
@@ -96,18 +98,72 @@ void Cliente::separarClientesPreferenciales(queue<Cliente*> clientes)
             clientes.pop();
         }
     }
+
+    ordenarClientesPreferenciales(terceraEdad);
+    ordenarClientesPreferenciales(discapacitados);
+    ordenarClientesPreferenciales(embarazadas);
+
+    while(!terceraEdad.empty())
+    {
+        clientes.push(terceraEdad.front());
+        terceraEdad.pop();
+    }
+    while(!discapacitados.empty())
+    {
+        clientes.push(discapacitados.front());
+        discapacitados.pop();
+    }
+    while(!embarazadas.empty())
+    {
+        clientes.push(embarazadas.front());
+        embarazadas.pop();
+    }
 }
 
-void Cliente::ordenarClientesPreferenciales(queue<Cliente> clientes)
+void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
 {
-    queue<Cliente*> mayores, menores;
-
+    stack<Cliente*> pilaAux1, pilaAux2;
+    
     Cliente* aux;
+    
+    if(clientes.empty()){return;}
 
-    while(clientes.empty())
+    while(!clientes.empty())
     {
-
+        pilaAux1.push(clientes.front());
+        clientes.pop();
     }
+
+    while(!pilaAux1.empty())
+    {
+        aux = pilaAux1.top();
+        pilaAux1.pop();
+
+        if(pilaAux2.empty())
+        {
+            pilaAux2.push(aux);
+        }
+        else if(pilaAux2.top()->getNumeroAtencion() > aux->getNumeroAtencion())
+        {
+            pilaAux2.push(aux);
+        }
+        else if(pilaAux2.top()->getNumeroAtencion() < aux->getNumeroAtencion())
+        {
+            while(!pilaAux2.empty() && aux->getNumeroAtencion() > pilaAux2.top()->getNumeroAtencion())
+            {
+                pilaAux1.push(pilaAux2.top());
+                pilaAux2.pop();
+            }
+            pilaAux2.push(aux);
+        }
+    }
+    while(!pilaAux2.empty())
+    {
+        clientes.push(pilaAux2.top());
+        pilaAux2.pop();
+    }
+    aux = nullptr;
+    delete(aux);    
 }
 
 string Cliente::getTipoCliente()

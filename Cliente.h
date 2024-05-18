@@ -19,7 +19,7 @@ class Cliente
         void registroClientes(int&, int&);
         Cliente* nuevoClientePreferencial(int&);
         void separarClientesPreferenciales(queue<Cliente*>);
-        void ordenarClientesPreferenciales(queue<Cliente>);
+        void ordenarClientesPreferenciales(queue<Cliente*>&);
         int getNumeroAtencion();
         string getTipoCliente();
         void rellenarListaCompras();
