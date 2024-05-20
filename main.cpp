@@ -72,10 +72,13 @@ int menu()
                 cout << "Opción no válida. Por favor, ingrese una opción válida.\n";
         }
     } while(opcion != 5);
+
     while(!clientesPreferenciales.empty())
     {
-        clientesPreferenciales.front()->getNumeroAtencion();
+        cout<<clientesPreferenciales.front()->getNumeroAtencion()<<endl;
+        clientesPreferenciales.pop();
     }
+
     return 0;
 }
 
