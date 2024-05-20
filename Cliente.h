@@ -9,21 +9,19 @@ class Cliente
     private:
         string tipoCliente;
         int numeroAtencion;
-        queue<Cliente*> clientes;
-        queue<Cliente*> clientesPreferenciales;
         queue<int> listaCompra;
 
     public:
         Cliente(string, int);
         ~Cliente();
-        void registroClientes(int&, int&);
+        void registroClientes(int&, int&,queue<Cliente*>&,queue<Cliente*>&);
         Cliente* nuevoClientePreferencial(int&);
-        void separarClientesPreferenciales(queue<Cliente*>);
+        void separarClientesPreferenciales(queue<Cliente*>&);
         void ordenarClientesPreferenciales(queue<Cliente*>&);
         int getNumeroAtencion();
         string getTipoCliente();
         void rellenarListaCompras();
-        void Cliente::atenderCliente(queue<Cliente*>);
+        void atenderCliente(queue<Cliente*>);
         queue<Cliente*> getClientes();
         queue<Cliente*> getClientesPreferenciales();
 };

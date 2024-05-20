@@ -11,10 +11,9 @@ Cliente::Cliente(string tipoCliente, int numeroAtencion)
 
 Cliente::~Cliente(){}
 
-void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial)
+void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial, queue<Cliente*>& clientesPreferenciales, queue<Cliente*>& clientes)
 {
     int opcion;
-
     do
     {
         cout<<"\n|---Tipo Cliente---|\n"
@@ -23,21 +22,20 @@ void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial)
             <<"\nElija una de las opciones(Ejemplo: 1): ";
         cin>>opcion;
 
-        switch (opcion)
+        if(opcion == 1)
         {
-            case 1:
-                clientesPreferenciales.push(nuevoClientePreferencial(contPreferencial));
-                break;
-            case 2:
-                contNoPreferencial++;
-                Cliente* nuevoCliente = new Cliente("No Preferencial",contNoPreferencial);
-                clientes.push(nuevoCliente);
-                break;
-            default:
-                cout<<"\nLa opcion seleccionada es incorrecta, coloque una de las mostradas en pantalla."<<endl;
-                break;
+            cout<<"a"<<endl;
+            clientesPreferenciales.push(nuevoClientePreferencial(contPreferencial));
+            cout<<"a"<<endl;
         }
+        else if(opcion == 2)
+        {
 
+            contNoPreferencial++;
+            Cliente* nuevoCliente = new Cliente("No Preferencial",contNoPreferencial);
+            clientes.push(nuevoCliente);
+        } 
+          
     }
     while(opcion != 1 && opcion != 2);
 }
@@ -45,6 +43,7 @@ void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial)
 Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
 {
     int opcion;
+    Cliente* nuevoCliente;
     contPreferencial++;
     do
     {
@@ -54,48 +53,46 @@ Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
             <<"3) Embarazada\n"
             <<"\nElija una de las opciones(Ejemplo: 1): ";
         cin>>opcion;
-        switch (opcion)
+        if(opcion == 1)
         {
-            case 1:
-                Cliente* nuevoCliente = new Cliente("Tercera edad",contPreferencial);
-                return nuevoCliente;
-                break;
-            case 2:
-                Cliente* nuevoCliente = new Cliente("Discapacitado",contPreferencial);
-                return nuevoCliente;
-                break;
-            case 3:
-                Cliente* nuevoCliente = new Cliente("Embarazada",contPreferencial);
-                return nuevoCliente;
-                break;
-            default:
-                cout<<"\nLa opcion seleccionada es incorrecta, coloque una de las mostradas en pantalla."<<endl;
-                break;
-        }        
-    }   
-    while (opcion < 1 || opcion > 3);
+            nuevoCliente = new Cliente("Tercera edad",contPreferencial);
+            cout<<"a"<<endl;
+        } 
+        else if (opcion == 2)
+        {
+            nuevoCliente = new Cliente("Discapacitado",contPreferencial);
+            return nuevoCliente;
+        }
+        else if (opcion == 3)
+        {
+            nuevoCliente = new Cliente("Embarazada",contPreferencial);
+            return nuevoCliente;
+        }
+    }while (opcion < 1 || opcion > 3);
+    cout<<"c"<<endl;
+    return nuevoCliente;
 }
 
-void Cliente::separarClientesPreferenciales(queue<Cliente*> clientes)
+void Cliente::separarClientesPreferenciales(queue<Cliente*>& clientesPreferenciales)
 {
     queue<Cliente*> terceraEdad, discapacitados, embarazadas;
     
-    while(!clientes.empty())
+    while(!clientesPreferenciales.empty())
     {
-        if(clientes.front()->getTipoCliente() == "Tercera edad")
+        if(clientesPreferenciales.front()->getTipoCliente() == "Tercera edad")
         {
-            terceraEdad.push(clientes.front());
-            clientes.pop();
+            terceraEdad.push(clientesPreferenciales.front());
+            clientesPreferenciales.pop();
         }
-        else if(clientes.front()->getTipoCliente() == "Discapacitado")
+        else if(clientesPreferenciales.front()->getTipoCliente() == "Discapacitado")
         {
-            discapacitados.push(clientes.front());
-            clientes.pop();
+            discapacitados.push(clientesPreferenciales.front());
+            clientesPreferenciales.pop();
         }
         else
         {
-            embarazadas.push(clientes.front());
-            clientes.pop();
+            embarazadas.push(clientesPreferenciales.front());
+            clientesPreferenciales.pop();
         }
     }
 
@@ -105,17 +102,17 @@ void Cliente::separarClientesPreferenciales(queue<Cliente*> clientes)
 
     while(!terceraEdad.empty())
     {
-        clientes.push(terceraEdad.front());
+        clientesPreferenciales.push(terceraEdad.front());
         terceraEdad.pop();
     }
     while(!discapacitados.empty())
     {
-        clientes.push(discapacitados.front());
+        clientesPreferenciales.push(discapacitados.front());
         discapacitados.pop();
     }
     while(!embarazadas.empty())
     {
-        clientes.push(embarazadas.front());
+        clientesPreferenciales.push(embarazadas.front());
         embarazadas.pop();
     }
 }
@@ -184,12 +181,4 @@ string Cliente::getTipoCliente()
 int Cliente::getNumeroAtencion()
 {
     return this->numeroAtencion;
-}
-queue<Cliente*> Cliente::getClientes()
-{
-    return this->clientes;
-}
-queue<Cliente*> Cliente::getClientesPreferenciales()
-{
-    return this->clientesPreferenciales;
 }

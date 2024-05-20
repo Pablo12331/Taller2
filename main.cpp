@@ -2,74 +2,33 @@
 #include "Cliente.h"
 #include "Producto.h"
 #include "HashMap.h"
+#include <queue>
 #include <fstream>
 
 using namespace std;
 
-// int ingresarClientes(Cliente* aux,int* contComun,int* contPref)
+// int atenderCliente(Cliente* aux)
 // {
-//     int cant;
-//     cout<<"Ingrese la cantidad de clientes que ingresaron: "<<endl;
-//     cin>>cant;
-//     int opcion;
-
-//     for(int i = 0;i<cant ;i++)
+//     if(aux->getClientes().empty() && aux->getClientesPreferenciales().empty())
 //     {
-
-//         while (true)
-//         {
-//             cout<<"Que tipo de cliente es?:\n"<<endl
-//                 <<" 1)Estándar"<<endl
-//                 <<" 2)Preferencial"<<endl;
-//             cin>>opcion;
-
-//             if(opcion == 1)
-//             {
-//                 contComun++;
-//                 Cliente* nuevoCliente = new Cliente("Estándar",*contComun);
-//                 //aquí se añade el nuevo cliente a la lista de comunes en el auxiliar (porfavor hacelo pablo q todavía no sé hashmap dou)
-//                 break;
-//             }
-//             if(opcion == 2)
-//             {
-//                 contPref++;
-//                 Cliente* nuevoCliente = new Cliente("Preferencial",*contPref);
-//                 //aquí se añade el nuevo cliente a la lista de preferenciales en el auxiliar (porfavor hacelo pablo q todavía no sé hashmap dou)
-//                 break;
-//             }
-//             cout<<"Respuesta errónea, intentelo de nuevo:"<<endl;
-//         }
+//         cout<<"No hay clientes en la fila."<<endl;
 //     }
+//     else if(!aux->getClientes().empty())
+//     {
+//         aux->atenderCliente(aux->getClientes());
+//     }
+
+//     //condicional que pregunta si hay elementos en alguna lista, si no lo hay, tira un mensaje diciendo que no hay personas en la cola y se termina el método.
+//     //condicional que pregunta si hay elementos en preferencial, si los hay: aux->ordenarClientesPreferenciales(aux->clientesPreferenciales). 
+//     //otro condicional que no depende del anterior, que pregunta si hay clientes en estándar, si los hay: aux->ordenarClientes(aux->clientes).
 //     return 0;
 // }
-
-int atenderCliente(Cliente* aux)
-{
-    if(aux->getClientes().empty() && aux->getClientesPreferenciales().empty())
-    {
-        cout<<"No hay clientes en la fila."<<endl;
-    }
-    else if(!aux->getClientesPreferenciales().empty())
-    {
-        aux->separarClientesPreferenciales(aux->getClientesPreferenciales());
-        aux->atenderCliente(aux->getClientesPreferenciales());
-        
-        return 0;
-    }
-    else if(!aux->getClientes().empty())
-    {
-        aux->atenderCliente(aux->getClientes());
-    }
-
-    //condicional que pregunta si hay elementos en alguna lista, si no lo hay, tira un mensaje diciendo que no hay personas en la cola y se termina el método.
-    //condicional que pregunta si hay elementos en preferencial, si los hay: aux->ordenarClientesPreferenciales(aux->clientesPreferenciales). 
-    //otro condicional que no depende del anterior, que pregunta si hay clientes en estándar, si los hay: aux->ordenarClientes(aux->clientes).
-    return 0;
-}
 
 int menu()
 {
     Cliente* filas;
+    queue<Cliente*> clientesPreferenciales;
+    queue<Cliente*> clientes;
     int contNoPreferencial = 0;
     int contPreferencial = 0;
     int opcion;
@@ -86,10 +45,19 @@ int menu()
         cout<<endl;
         switch(opcion) {
             case 1:
-                filas->registroClientes(contPreferencial, contNoPreferencial);
+                int cantidadPersonas;
+                cout<<"¿Cuantas personas hay?(Ejemplo: 5): ";
+                cin>>cantidadPersonas;
+                for (int i = 0; i < cantidadPersonas; i++)
+                {
+                    cout<<"a"<<endl;
+                    filas->registroClientes(contPreferencial, contNoPreferencial, clientesPreferenciales, clientes);
+                }
+                cout<<"b"<<endl;
+                filas->separarClientesPreferenciales(clientesPreferenciales);
                 break;
             case 2:
-                atenderCliente(filas);
+                //atenderCliente(filas);
                 break;
             case 3:
                 // Método para agregar productos a bodega
@@ -104,7 +72,10 @@ int menu()
                 cout << "Opción no válida. Por favor, ingrese una opción válida.\n";
         }
     } while(opcion != 5);
-
+    while(!clientesPreferenciales.empty())
+    {
+        clientesPreferenciales.front()->getNumeroAtencion();
+    }
     return 0;
 }
 
@@ -127,19 +98,11 @@ void cargarDatosBodega(HashMap* bodega)
     datosProductos.close();
 }
 
-void suma(int &a)
-{
-    a++;
-}
-
 void farmacia()
 {
-    int a = 1;
-    suma(a);
-    cout<<a<<endl; 
     HashMap* bodega = new HashMap();
     cargarDatosBodega(bodega);
-    //menu();
+    menu();
 }
 
 int main()
