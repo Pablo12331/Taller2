@@ -50,10 +50,8 @@ int menu()
                 cin>>cantidadPersonas;
                 for (int i = 0; i < cantidadPersonas; i++)
                 {
-                    cout<<"a"<<endl;
                     filas->registroClientes(contPreferencial, contNoPreferencial, clientesPreferenciales, clientes);
                 }
-                cout<<"b"<<endl;
                 filas->separarClientesPreferenciales(clientesPreferenciales);
                 break;
             case 2:

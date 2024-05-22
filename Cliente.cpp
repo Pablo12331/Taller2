@@ -24,9 +24,7 @@ void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial, q
 
         if(opcion == 1)
         {
-            cout<<"a"<<endl;
             clientesPreferenciales.push(nuevoClientePreferencial(contPreferencial));
-            cout<<"a"<<endl;
         }
         else if(opcion == 2)
         {
@@ -56,7 +54,6 @@ Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
         if(opcion == 1)
         {
             nuevoCliente = new Cliente("Tercera edad",contPreferencial);
-            cout<<"a"<<endl;
         } 
         else if (opcion == 2)
         {
@@ -69,7 +66,6 @@ Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
             return nuevoCliente;
         }
     }while (opcion < 1 || opcion > 3);
-    cout<<"c"<<endl;
     return nuevoCliente;
 }
 
@@ -163,14 +159,17 @@ void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
     delete(aux);    
 }
 
-void Cliente::atenderCliente(queue<Cliente*> fila)
+void Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales)
 {
-    Cliente* cliente = fila.front();
+    if(!clientesPreferenciales.empty())
+    {
+        clientesPreferenciales.front();
+        clientesPreferenciales.pop();
+    }
+    else if(!clientes.empty())
+    {
 
-    //Proceso de atención.
-
-    fila.pop();
-    delete(cliente);
+    }
 }
 
 string Cliente::getTipoCliente()
