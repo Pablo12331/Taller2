@@ -41,17 +41,17 @@ void Producto::setCantidadProducto()
     cout<<this->cantidadProducto<<endl;
 }
 
-void Producto::agregarProducto(HashMap* &productos, vector<int> idProductos)
-{
-    cout<<"Lista de productos en bodega: "<<endl;
-    Producto* aux;
-    for(int id : idProductos)
-    {
-        aux = productos->get(id);
-        cout<<"ID: "<<id<<"| Nombre: "<< aux->getProducto()<<"| Stock: " <<aux->getCantidadProducto()<<endl; 
-    }
-    return;
-}
+// void Producto::agregarProducto(HashMap* &productos, vector<int> idProductos)
+// {
+//     cout<<"Lista de productos en bodega: "<<endl;
+//     Producto* aux;
+//     for(int id : idProductos)
+//     {
+//         aux = productos->get(id);
+//         cout<<"ID: "<<id<<"| Nombre: "<< aux->getProducto()<<"| Stock: " <<aux->getCantidadProducto()<<endl; 
+//     }
+//     return;
+// }
 
 Producto* Producto::productoRandom()
 {
