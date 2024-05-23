@@ -25,10 +25,22 @@ using namespace std;
 //     return 0;
 // }
 
+void datosBodega(HashMap* &bodega, vector<int> idProductos)
+{
+    cout<<"Lista de productos en bodega: "<<endl;
+    Producto* aux;
+    for(int id : idProductos)
+    {
+        aux = bodega->get(id);
+        cout<<"ID: "<<id<<"| Nombre: "<< aux->getProducto()<<"| Stock: " <<aux->getCantidadProducto()<<endl; 
+    }
+    return;
+}
+
 int menu(HashMap*& bodega, vector<int> idProductos)
 {
     Cliente* filas;
-    //Producto* aux;
+    Producto* aux;
     queue<Cliente*> clientesPreferenciales;
     queue<Cliente*> clientes;
     int contNoPreferencial = 0;
@@ -60,7 +72,18 @@ int menu(HashMap*& bodega, vector<int> idProductos)
                 //atenderCliente(filas);
                 break;
             case 3:
-                //aux->agregarProducto(bodega, idProductos);
+                int cantidadProductos, stockSuma, idProducto;
+                datosBodega(bodega, idProductos);
+                cout<<"\n¿Cuantos productos se van a reabastecer?(Ejemplo: 2): ";
+                cin>>cantidadProductos;
+                for(int i = 0; i < cantidadProductos; i++)
+                {
+                    stockSuma = -1;
+                    idProducto = aux->agregarProducto(idProductos, stockSuma);
+                    cout<<"\nStock agregado..."<<endl;
+                    bodega->get(idProducto)->setCantidadProducto(stockSuma);
+                }
+                cout<<"\nReabastecimiento completo..."<<endl;
                 break;
             case 4:
                 // Método para generar boleta de venta
@@ -96,17 +119,19 @@ void cargarDatosBodega(HashMap* &bodega, vector<int> &idProductos)
     {
         Producto* producto = aux->ingresarProductos(linea);
         int id = producto->getIdProducto();
-        //idProductos.push_back(id);
+        idProductos.push_back(id);
         bodega->insert(id, producto);
     }
     datosProductos.close();
 }
+
 
 void farmacia()
 {
     vector<int> idProductos;
     HashMap* bodega = new HashMap();
     cargarDatosBodega(bodega, idProductos);
+    datosBodega(bodega, idProductos);
     menu(bodega, idProductos);
 }
 

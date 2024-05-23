@@ -36,22 +36,35 @@ Producto* Producto::ingresarProductos(string datosProducto)
 
 Producto::~Producto(){}
 
-void Producto::setCantidadProducto()
+void Producto::setCantidadProducto(int stockSuma)
 {
-    cout<<this->cantidadProducto<<endl;
+    this->cantidadProducto = this->cantidadProducto + stockSuma;
 }
 
-// void Producto::agregarProducto(HashMap* &productos, vector<int> idProductos)
-// {
-//     cout<<"Lista de productos en bodega: "<<endl;
-//     Producto* aux;
-//     for(int id : idProductos)
-//     {
-//         aux = productos->get(id);
-//         cout<<"ID: "<<id<<"| Nombre: "<< aux->getProducto()<<"| Stock: " <<aux->getCantidadProducto()<<endl; 
-//     }
-//     return;
-// }
+int Producto::agregarProducto(vector<int> idProductos, int& stockSuma)
+{
+    int idProducto;
+    int aux;
+    
+    do
+    {
+        cout<<"\nEscriba ID del producto al que quiera agregar stock(Ejemplo: 9718): ";
+        cin>>idProducto;
+        for(int i = 0; i < idProductos.size(); i++)
+        {
+            aux = idProductos[i];
+            if(aux == idProducto)
+            {
+                cout<<"\n¿Cuanto sera la cantidad que se le agregara al stock?(Ejemplo: 10): ";
+                cin>>stockSuma;
+                break;
+            }
+        }
+        if(stockSuma == -1){cout<<"\nNo se encontro el ID escrito, por favor verifique el ID que escribio."<<endl;}       
+    }while(idProducto != aux);
+
+    return idProducto;
+}
 
 Producto* Producto::productoRandom()
 {
