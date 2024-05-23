@@ -161,14 +161,22 @@ void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
 
 void Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales)
 {
-    if(!clientesPreferenciales.empty())
+    if(clientesPreferenciales.empty() && clientes.empty())
     {
-        clientesPreferenciales.front();
+        cout<<"No hay clientes en la fila."<<endl;
+        return;
+    }   
+    else if(!clientesPreferenciales.empty())
+    {
+        Cliente* cliente = clientesPreferenciales.front();
+        
         clientesPreferenciales.pop();
+        return;
     }
     else if(!clientes.empty())
     {
-
+        Cliente* cliente = clientes.front();
+        clientes.pop();
     }
 }
 

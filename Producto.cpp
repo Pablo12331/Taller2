@@ -40,9 +40,10 @@ void Producto::setCantidadProducto()
     cout<<this->cantidadProducto<<endl;
 }
 
-Producto* Producto::agregarProducto()
+void Producto::agregarProducto(HashMap* &productos)
 {
-    return nullptr;
+    
+    return;
 }
 
 Producto* Producto::productoRandom()

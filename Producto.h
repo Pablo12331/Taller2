@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include "HashMap.h"
+
 using namespace std;
 
 class Producto
@@ -14,7 +16,7 @@ class Producto
         ~Producto();
         Producto* ingresarProductos(string);
         void setCantidadProducto();
-        Producto* agregarProducto();
+        void agregarProducto(HashMap* &productos);
         Producto* productoRandom();
         int getIdProducto();
 };

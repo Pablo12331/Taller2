@@ -37,7 +37,7 @@ int menu()
         cout << "\n|--- Menú ---|\n";
         cout << "1. Entregar número de cliente\n";
         cout << "2. Atender cliente\n";
-        cout << "3. Agregar productos a bodega\n";
+        cout << "3. Reabastecer bodega\n";
         cout << "4. Generar boleta de venta\n";
         cout << "5. Salir\n";
         cout << "Ingrese una opción(Ejemplo: 1): ";
@@ -80,7 +80,7 @@ int menu()
     return 0;
 }
 
-void cargarDatosBodega(HashMap* bodega)
+void cargarDatosBodega(HashMap* &bodega)
 {
     Producto* aux;
     
