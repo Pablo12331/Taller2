@@ -16,7 +16,9 @@ class Producto
         ~Producto();
         Producto* ingresarProductos(string);
         void setCantidadProducto();
-        void agregarProducto(HashMap* &productos);
+        void agregarProducto(HashMap* &productos, vector<int>);
         Producto* productoRandom();
+        string getProducto();
         int getIdProducto();
+        int getCantidadProducto();
 };

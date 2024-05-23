@@ -3,6 +3,7 @@
 #include "Producto.h"
 #include "HashMap.h"
 #include <queue>
+#include <vector>
 #include <fstream>
 
 using namespace std;
@@ -24,9 +25,10 @@ using namespace std;
 //     return 0;
 // }
 
-int menu()
+int menu(HashMap*& bodega, vector<int> idProductos)
 {
     Cliente* filas;
+    Producto* aux;
     queue<Cliente*> clientesPreferenciales;
     queue<Cliente*> clientes;
     int contNoPreferencial = 0;
@@ -58,7 +60,7 @@ int menu()
                 //atenderCliente(filas);
                 break;
             case 3:
-                // Método para agregar productos a bodega
+                aux->agregarProducto(bodega, idProductos);
                 break;
             case 4:
                 // Método para generar boleta de venta
@@ -80,7 +82,7 @@ int menu()
     return 0;
 }
 
-void cargarDatosBodega(HashMap* &bodega)
+void cargarDatosBodega(HashMap* &bodega, vector<int> &idProductos)
 {
     Producto* aux;
     
@@ -94,6 +96,7 @@ void cargarDatosBodega(HashMap* &bodega)
     {
         Producto* producto = aux->ingresarProductos(linea);
         int id = producto->getIdProducto();
+        idProductos.push_back(id);
         bodega->insert(id, producto);
     }
     datosProductos.close();
@@ -101,9 +104,10 @@ void cargarDatosBodega(HashMap* &bodega)
 
 void farmacia()
 {
+    vector<int> idProductos;
     HashMap* bodega = new HashMap();
-    cargarDatosBodega(bodega);
-    menu();
+    cargarDatosBodega(bodega, idProductos);
+    menu(bodega, idProductos);
 }
 
 int main()
