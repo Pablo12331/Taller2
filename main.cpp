@@ -28,7 +28,7 @@ using namespace std;
 int menu(HashMap*& bodega, vector<int> idProductos)
 {
     Cliente* filas;
-    Producto* aux;
+    //Producto* aux;
     queue<Cliente*> clientesPreferenciales;
     queue<Cliente*> clientes;
     int contNoPreferencial = 0;
@@ -60,7 +60,7 @@ int menu(HashMap*& bodega, vector<int> idProductos)
                 //atenderCliente(filas);
                 break;
             case 3:
-                aux->agregarProducto(bodega, idProductos);
+                //aux->agregarProducto(bodega, idProductos);
                 break;
             case 4:
                 // Método para generar boleta de venta
@@ -96,7 +96,7 @@ void cargarDatosBodega(HashMap* &bodega, vector<int> &idProductos)
     {
         Producto* producto = aux->ingresarProductos(linea);
         int id = producto->getIdProducto();
-        idProductos.push_back(id);
+        //idProductos.push_back(id);
         bodega->insert(id, producto);
     }
     datosProductos.close();

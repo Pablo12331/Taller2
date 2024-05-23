@@ -1,4 +1,5 @@
 #include "Producto.h"
+#include "HashMap.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>

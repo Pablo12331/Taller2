@@ -11,7 +11,6 @@ class Producto
         int precioProducto, idProducto, cantidadProducto;
 
     public:
-     
         Producto(string, string, string, int, int, int);
         ~Producto();
         Producto* ingresarProductos(string);
