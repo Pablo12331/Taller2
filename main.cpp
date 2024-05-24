@@ -46,6 +46,8 @@ int menu(HashMap*& bodega, vector<int> idProductos)
     int contNoPreferencial = 0;
     int contPreferencial = 0;
     int opcion;
+    string boletaActiva;
+
 
     do {
         cout << "\n|--- Menú ---|\n";
@@ -69,7 +71,7 @@ int menu(HashMap*& bodega, vector<int> idProductos)
                 filas->separarClientesPreferenciales(clientesPreferenciales);
                 break;
             case 2:
-                //atenderCliente(filas);
+                boletaActiva = filas->atenderCliente(clientes,clientesPreferenciales);
                 break;
             case 3:
                 int cantidadProductos, stockSuma, idProducto;
@@ -86,7 +88,7 @@ int menu(HashMap*& bodega, vector<int> idProductos)
                 cout<<"\nReabastecimiento completo..."<<endl;
                 break;
             case 4:
-                // Método para generar boleta de venta
+                imprimirBoleta(boletaActiva);
                 break;
             case 5:
                 cout << "Saliendo del programa...\n";
@@ -138,6 +140,14 @@ void farmacia()
 int main()
 {
     farmacia();
+}
+
+void imprimirBoleta(string boleta)
+{
+    cout<<"--------------Boleta--------------"<<endl;
+    cout<<""<<endl;
+
+
 }
 
 

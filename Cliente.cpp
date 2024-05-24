@@ -159,24 +159,28 @@ void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
     delete(aux);    
 }
 
-void Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales)
+string Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales)
 {
     if(clientesPreferenciales.empty() && clientes.empty())
     {
         cout<<"No hay clientes en la fila."<<endl;
-        return;
+        return nullptr;
     }   
     else if(!clientesPreferenciales.empty())
     {
         Cliente* cliente = clientesPreferenciales.front();
-        
         clientesPreferenciales.pop();
-        return;
+        string boleta;
+        //Proceso aleatorio para determinar la compra (el cual se guarda como string en "boleta"), que posteriormente se mostrará en la boleta del punto 4.
+        return boleta;
     }
     else if(!clientes.empty())
     {
         Cliente* cliente = clientes.front();
         clientes.pop();
+        string boleta;
+        //Proceso aleatorio para determinar la compra (el cual se guarda como string en "boleta"), que posteriormente se mostrará en la boleta del punto 4.
+        return boleta;
     }
 }
 

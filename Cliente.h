@@ -21,6 +21,6 @@ class Cliente
         int getNumeroAtencion();
         string getTipoCliente();
         void rellenarListaCompras();
-        void atenderCliente(queue<Cliente*>&, queue<Cliente*>&);
+        string atenderCliente(queue<Cliente*>&, queue<Cliente*>&);
         queue<int> getListaCompra();
 };
