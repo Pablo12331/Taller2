@@ -14,7 +14,7 @@ class Producto
         ~Producto();
         Producto* ingresarProductos(string);
         void setCantidadProducto(int);
-        bool verificarIdProducto(int, vector<int>);
+        bool verificarIdProducto(int&, vector<int>);
         int agregarProducto(vector<int>, int&);
         Producto* productoRandom();
         string getProducto();

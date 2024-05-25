@@ -41,16 +41,22 @@ void Producto::setCantidadProducto(int stockSuma)
     this->cantidadProducto = this->cantidadProducto + stockSuma;
 }
 
-bool Producto::verificarIdProducto(int idProducto, vector<int> idProductos)
+bool Producto::verificarIdProducto(int& idProducto, vector<int> idProductos)
 {
-    for(int id : idProductos)
+    do
     {
-        if(id == idProducto)
+        cout<<"\nEscriba el ID del producto(Ejemplo: 9718): ";
+        cin>>idProducto;
+        for(int id : idProductos)
         {
-            return true;
+            if(id == idProducto)
+            {
+                return true;
+            }
         }
-    }
-    return false;
+        cout<<"\nNo se encontro el ID escrito, por favor verifique el ID que escribio."<<endl;
+              
+    }while(true);
 }
 
 int Producto::agregarProducto(vector<int> idProductos, int& stockSuma)
@@ -58,21 +64,11 @@ int Producto::agregarProducto(vector<int> idProductos, int& stockSuma)
     int idProducto;
     int aux;
     
-    do
+    if(verificarIdProducto(idProducto, idProductos))
     {
-        cout<<"\nEscriba ID del producto al que quiera agregar stock(Ejemplo: 9718): ";
-        cin>>idProducto;
-        if(verificarIdProducto(idProducto, idProductos))
-        {
-            cout<<"\n¿Cuanto sera la cantidad que se le agregara al stock?(Ejemplo: 10): ";
-            cin>>stockSuma;
-            break;
-        }
-        else
-        {
-            cout<<"\nNo se encontro el ID escrito, por favor verifique el ID que escribio."<<endl;
-        }       
-    }while(stockSuma == -1);
+        cout<<"\n¿Cuanto sera la cantidad que se le agregara al stock?(Ejemplo: 10): ";
+        cin>>stockSuma;
+    }
 
     return idProducto;
 }

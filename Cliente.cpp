@@ -105,10 +105,6 @@ void Cliente::separarClientesPreferenciales(queue<Cliente*>& clientesPreferencia
         }
     }
 
-    ordenarClientesPreferenciales(terceraEdad);
-    ordenarClientesPreferenciales(discapacitados);
-    ordenarClientesPreferenciales(embarazadas);
-
     while(!terceraEdad.empty())
     {
         clientesPreferenciales.push(terceraEdad.front());
@@ -126,58 +122,12 @@ void Cliente::separarClientesPreferenciales(queue<Cliente*>& clientesPreferencia
     }
 }
 
-void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
+void Cliente::atencionClientePreferencial(Cliente* cliente)
 {
-    stack<Cliente*> pilaAux1, pilaAux2;
-    
-    Cliente* aux;
-    
-    if(clientes.empty()){return;}
 
-    while(!clientes.empty())
-    {
-        pilaAux1.push(clientes.front());
-        clientes.pop();
-    }
-
-    while(!pilaAux1.empty())
-    {
-        aux = pilaAux1.top();
-        pilaAux1.pop();
-
-        if(pilaAux2.empty())
-        {
-            pilaAux2.push(aux);
-        }
-        else if(pilaAux2.top()->getNumeroAtencion() > aux->getNumeroAtencion())
-        {
-            pilaAux2.push(aux);
-        }
-        else if(pilaAux2.top()->getNumeroAtencion() < aux->getNumeroAtencion())
-        {
-            while(!pilaAux2.empty() && aux->getNumeroAtencion() > pilaAux2.top()->getNumeroAtencion())
-            {
-                pilaAux1.push(pilaAux2.top());
-                pilaAux2.pop();
-            }
-            pilaAux2.push(aux);
-        }
-    }
-    while(!pilaAux2.empty())
-    {
-        clientes.push(pilaAux2.top());
-        pilaAux2.pop();
-    }
-    aux = nullptr;
-    delete(aux);    
 }
 
-string Cliente::atencionClientePreferencial(Cliente* cliente)
-{
-    
-}
-
-string Cliente::atencionClienteNoPreferencial(Cliente* cliente)
+void Cliente::atencionClienteNoPreferencial(Cliente* cliente)
 {
 
 }
@@ -188,8 +138,8 @@ string Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clien
     {
         cout<<"No hay clientes en la fila."<<endl;
         return nullptr;
-    }   
-    else if(!clientesPreferenciales.empty())
+    }
+    if(!clientesPreferenciales.empty())
     {
         Cliente* cliente = clientesPreferenciales.front();
         clientesPreferenciales.pop();
@@ -197,7 +147,7 @@ string Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clien
         //Proceso aleatorio para determinar la compra (el cual se guarda como string en "boleta"), que posteriormente se mostrará en la boleta del punto 4.
         return boleta;
     }
-    else if(!clientes.empty())
+    if(!clientes.empty())
     {
         Cliente* cliente = clientes.front();
         clientes.pop();

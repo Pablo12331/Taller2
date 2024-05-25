@@ -48,7 +48,7 @@ void imprimirBoleta(string boleta)
 void reabastecerBodega(HashMap* &bodega, vector<int> idProductos)
 {
     Producto* aux;
-    int cantidadProductos, idProducto, stockSuma = -1;
+    int cantidadProductos, idProducto, stockSuma;
     datosBodega(bodega, idProductos);
     cout<<"\n¿Cuantos productos se van a reabastecer?(Ejemplo: 2): ";
     cin>>cantidadProductos;

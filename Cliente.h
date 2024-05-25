@@ -23,7 +23,7 @@ class Cliente
         string getTipoCliente();
         void rellenarListaCompras();
         string atenderCliente(queue<Cliente*>&, queue<Cliente*>&);
-        string atencionClientePreferencial(Cliente* cliente);
-        string atencionClienteNoPreferencial(Cliente* cliente);
+        void atencionClientePreferencial(Cliente* cliente);
+        void atencionClienteNoPreferencial(Cliente* cliente);
         queue<int> getListaCompra();
 };
