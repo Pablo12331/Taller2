@@ -37,18 +37,38 @@ void datosBodega(HashMap* &bodega, vector<int> idProductos)
     return;
 }
 
+void imprimirBoleta(string boleta)
+{
+    cout<<"--------------Boleta--------------"<<endl;
+    cout<<""<<endl;
+
+
+}
+
+void reabastecerBodega(HashMap* &bodega, vector<int> idProductos)
+{
+    Producto* aux;
+    int cantidadProductos, idProducto, stockSuma = -1;
+    datosBodega(bodega, idProductos);
+    cout<<"\n¿Cuantos productos se van a reabastecer?(Ejemplo: 2): ";
+    cin>>cantidadProductos;
+    for(int i = 0; i < cantidadProductos; i++)
+    {
+        idProducto = aux->agregarProducto(idProductos, stockSuma);
+        cout<<"\nStock agregado..."<<endl;
+        bodega->get(idProducto)->setCantidadProducto(stockSuma);
+    }
+    cout<<"\nReabastecimiento completo..."<<endl;
+}
+
 int menu(HashMap*& bodega, vector<int> idProductos)
 {
+    //transformar los vectores en filas
     Cliente* filas;
-    Producto* aux;
     queue<Cliente*> clientesPreferenciales;
     queue<Cliente*> clientes;
-    int contNoPreferencial = 0;
-    int contPreferencial = 0;
-    int opcion;
+    int opcion, contNoPreferencial = 0, contPreferencial = 0;
     string boletaActiva;
-
-
     do {
         cout << "\n|--- Menú ---|\n";
         cout << "1. Entregar número de cliente\n";
@@ -61,31 +81,13 @@ int menu(HashMap*& bodega, vector<int> idProductos)
         cout<<endl;
         switch(opcion) {
             case 1:
-                int cantidadPersonas;
-                cout<<"¿Cuantas personas hay?(Ejemplo: 5): ";
-                cin>>cantidadPersonas;
-                for (int i = 0; i < cantidadPersonas; i++)
-                {
-                    filas->registroClientes(contPreferencial, contNoPreferencial, clientesPreferenciales, clientes);
-                }
-                filas->separarClientesPreferenciales(clientesPreferenciales);
+                filas->entregaNumeroClientes(contPreferencial, contNoPreferencial, clientesPreferenciales, clientes);
                 break;
             case 2:
                 boletaActiva = filas->atenderCliente(clientes,clientesPreferenciales);
                 break;
             case 3:
-                int cantidadProductos, stockSuma, idProducto;
-                datosBodega(bodega, idProductos);
-                cout<<"\n¿Cuantos productos se van a reabastecer?(Ejemplo: 2): ";
-                cin>>cantidadProductos;
-                for(int i = 0; i < cantidadProductos; i++)
-                {
-                    stockSuma = -1;
-                    idProducto = aux->agregarProducto(idProductos, stockSuma);
-                    cout<<"\nStock agregado..."<<endl;
-                    bodega->get(idProducto)->setCantidadProducto(stockSuma);
-                }
-                cout<<"\nReabastecimiento completo..."<<endl;
+                reabastecerBodega(bodega, idProductos);
                 break;
             case 4:
                 imprimirBoleta(boletaActiva);
@@ -102,6 +104,11 @@ int menu(HashMap*& bodega, vector<int> idProductos)
     {
         cout<<clientesPreferenciales.front()->getNumeroAtencion()<<endl;
         clientesPreferenciales.pop();
+    }
+    while(!clientes.empty())
+    {
+        cout<<clientes.front()->getNumeroAtencion()<<endl;
+        clientes.pop();
     }
 
     return 0;
@@ -133,7 +140,6 @@ void farmacia()
     vector<int> idProductos;
     HashMap* bodega = new HashMap();
     cargarDatosBodega(bodega, idProductos);
-    datosBodega(bodega, idProductos);
     menu(bodega, idProductos);
 }
 
@@ -142,13 +148,6 @@ int main()
     farmacia();
 }
 
-void imprimirBoleta(string boleta)
-{
-    cout<<"--------------Boleta--------------"<<endl;
-    cout<<""<<endl;
-
-
-}
 
 
 

@@ -11,6 +11,19 @@ Cliente::Cliente(string tipoCliente, int numeroAtencion)
 
 Cliente::~Cliente(){}
 
+void Cliente::entregaNumeroClientes(int& contPreferencial, int& contNoPreferencial, queue<Cliente*>& clientesPreferenciales, queue<Cliente*>& clientes)
+{
+    int cantidadPersonas;
+    cout<<"¿Cuantas personas hay?(Ejemplo: 5): ";
+    cin>>cantidadPersonas;
+    for (int i = 0; i < cantidadPersonas; i++)
+    {
+        registroClientes(contPreferencial, contNoPreferencial, clientesPreferenciales, clientes);
+        cout<<"\nNumero entregado...\n";
+    }
+    separarClientesPreferenciales(clientesPreferenciales);
+}
+
 void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial, queue<Cliente*>& clientesPreferenciales, queue<Cliente*>& clientes)
 {
     int opcion;
@@ -159,6 +172,16 @@ void Cliente::ordenarClientesPreferenciales(queue<Cliente*> &clientes)
     delete(aux);    
 }
 
+string Cliente::atencionClientePreferencial(Cliente* cliente)
+{
+    
+}
+
+string Cliente::atencionClienteNoPreferencial(Cliente* cliente)
+{
+
+}
+
 string Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales)
 {
     if(clientesPreferenciales.empty() && clientes.empty())
@@ -182,6 +205,7 @@ string Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clien
         //Proceso aleatorio para determinar la compra (el cual se guarda como string en "boleta"), que posteriormente se mostrará en la boleta del punto 4.
         return boleta;
     }
+    return "";
 }
 
 string Cliente::getTipoCliente()
