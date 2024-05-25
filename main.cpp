@@ -89,8 +89,7 @@ int menu(HashMap*& bodega, vector<int> idProductos)
         cout << "1. Entregar número de cliente\n";
         cout << "2. Atender cliente\n";
         cout << "3. Reabastecer bodega\n";
-        cout << "4. Generar boleta de venta\n";
-        cout << "5. Salir\n";
+        cout << "4. Salir\n";
         cout << "Ingrese una opción(Ejemplo: 1): ";
         cin >> opcion;
         cout<<endl;
@@ -105,8 +104,6 @@ int menu(HashMap*& bodega, vector<int> idProductos)
                 reabastecerBodega(bodega, idProductos);
                 break;
             case 4:
-                break;
-            case 5:
                 cout << "Saliendo del programa...\n";
                 break;
             default:

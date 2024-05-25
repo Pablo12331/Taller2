@@ -2,7 +2,7 @@
 #include <queue>
 #include <stack>
 #include "Cliente.h"
-
+#include <string>
 Cliente::Cliente(string tipoCliente, int numeroAtencion)
 {
     this ->tipoCliente = tipoCliente;
@@ -126,26 +126,51 @@ void Cliente::atencionCliente(Cliente* cliente, HashMap*& bodega, vector<int> id
 {
     Producto* aux;
     Producto* producto;
-    int compraTotal, idProducto;
+    int compraTotal = 0, idProducto, opcion, opcion2;
 
-    string boleta = "\n---------- Boleta ----------" "\n----Tipo cliente: " 
-                    + cliente->getTipoCliente() + "\n----Numero cliente: " + to_string(cliente->getNumeroAtencion());
+    string boleta = "\n------------- Boleta --------------" "\n----Tipo cliente: " 
+                    + cliente->getTipoCliente() + "\n----Numero cliente: " + to_string(cliente->getNumeroAtencion())
+                    + "\n------------- Compra -------------";
 
-    cout<<"\nProductos compra del cliente numero "<< cliente->getNumeroAtencion() <<": "<<endl;
+    cout<<"\nProductos del cliente numero "<< cliente->getNumeroAtencion() <<": "<<endl;
 
-    idProducto = aux->verificarIdProducto(idProducto, idProductos);
+    do
+    {
+        aux->verificarIdProducto(idProducto, idProductos);
+        bodega->get(idProducto)->setCantidadProducto(-1);
+        producto = bodega->get(idProducto);
+        if(producto->getCantidadProducto() == 0){cout<<"\nSin stock de producto...\n";}
+        else
+        {
+            compraTotal += producto->getPrecioProducto();
+            boleta += "\nProducto: " + producto->getProducto() + "| Precio: " + to_string(producto->getPrecioProducto());
+        }
 
-    producto = bodega->get(idProducto);
+        do
+        {
+            cout<<"\n¿Se ingresara otro producto?"
+                <<"\n1) Si"
+                <<"\n2) No"
+                <<"\nElija una de las opciones(Ejemplo: 1): ";
+            cin>>opcion;
+            if(opcion == 2)
+            {
+                boleta += "\nTotal a pagar: " + to_string(compraTotal) + "\n";
+                break;
+            }
+            else if(opcion != 1){cout<<"\nLa opcion seleccionada es incorrecta...";}
+
+        } while(opcion != 1);
+
+    } while(opcion == 1);
     
-    boleta += "\n---------- Compra ----------"  "\nProducto: " + producto->getProducto() + " " + to_string(producto->getPrecioProducto());
-
-}
-
-string Cliente::atenderClientes(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales, HashMap*& bodega, vector<int> idProductos)
-{
-    string boleta;
-    
-    return "";
+    cout<<"\n¿Desea imprimir boleta?"
+        <<"\n1) Si"
+        <<"\n2) No"
+        <<"\nElija una de las opciones(Ejemplo: 1): ";
+    cin>>opcion2;
+    if(opcion2 == 1){cout<<boleta<<endl;}
+    else if(opcion2 == 2){cout<<"\nCliente atendido con exito....\n";}
 }
 
 string Cliente::getTipoCliente()

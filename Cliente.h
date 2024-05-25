@@ -12,7 +12,6 @@ class Cliente
     private:
         string tipoCliente;
         int numeroAtencion;
-        queue<int> listaCompra;
 
     public:
         Cliente(string, int);
@@ -21,11 +20,7 @@ class Cliente
         void registroClientes(int&, int&,queue<Cliente*>&,queue<Cliente*>&);
         Cliente* nuevoClientePreferencial(int&);
         void separarClientesPreferenciales(queue<Cliente*>&);
-        void ordenarClientesPreferenciales(queue<Cliente*>&);
         int getNumeroAtencion();
         string getTipoCliente();
-        void rellenarListaCompras();
-        string atenderClientes(queue<Cliente*>&, queue<Cliente*>&, HashMap*&, vector<int>);
         void atencionCliente(Cliente*, HashMap*&, vector<int>);
-        queue<int> getListaCompra();
 };
