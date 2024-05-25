@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -96,4 +97,17 @@ int Producto::getCantidadProducto()
 int Producto::getPrecioProducto()
 {
     return this->precioProducto;
+}
+
+string Producto::informacionProducto()
+{
+    return this->categoria + "," + this->subCategoria + "," + this->producto + "," + to_string(this->precioProducto) +
+          "," + to_string(this->idProducto) + "," + to_string(this->cantidadProducto);
+}
+
+void Producto::actualizarProductos(string productos)
+{
+    ofstream datosProductos("Productos.txt", ios::out);
+    datosProductos << productos;
+    datosProductos.close();
 }

@@ -21,4 +21,6 @@ class Producto
         int getIdProducto();
         int getCantidadProducto();
         int getPrecioProducto();
+        void actualizarProductos(string);
+        string informacionProducto();
 };

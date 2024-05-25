@@ -25,6 +25,8 @@ using namespace std;
 //     return 0;
 // }
 
+
+
 void datosBodega(HashMap* &bodega, vector<int> idProductos)
 {
     cout<<"Lista de productos en bodega: "<<endl;
@@ -35,6 +37,21 @@ void datosBodega(HashMap* &bodega, vector<int> idProductos)
         cout<<"ID: "<<id<<"| Nombre: "<< aux->getProducto()<<"| Stock: " <<aux->getCantidadProducto()<<endl; 
     }
     return;
+}
+
+void actualizarDatosBodega(HashMap* &bodega, vector<int> idProductos)
+{
+    Producto* aux;
+    string actualizacionBodega = "";
+    for(int id : idProductos)
+    {
+        if(bodega->getNumberOfElements() != 1){actualizacionBodega += bodega->get(id)->informacionProducto() + "\n";}
+        else{actualizacionBodega += bodega->get(id)->informacionProducto();}
+        bodega->erase(id);
+    }
+    aux->actualizarProductos(actualizacionBodega);
+    aux = nullptr;
+    delete(aux);
 }
 
 void atenderClientes(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales, HashMap*& bodega, vector<int> idProductos)
@@ -109,18 +126,7 @@ int menu(HashMap*& bodega, vector<int> idProductos)
             default:
                 cout << "Opción no válida. Por favor, ingrese una opción válida.\n";
         }
-    } while(opcion != 5);
-
-    while(!clientesPreferenciales.empty())
-    {
-        cout<<clientesPreferenciales.front()->getNumeroAtencion()<<endl;
-        clientesPreferenciales.pop();
-    }
-    while(!clientes.empty())
-    {
-        cout<<clientes.front()->getNumeroAtencion()<<endl;
-        clientes.pop();
-    }
+    } while(opcion != 4);
 
     return 0;
 }
@@ -152,6 +158,7 @@ void farmacia()
     HashMap* bodega = new HashMap();
     cargarDatosBodega(bodega, idProductos);
     menu(bodega, idProductos);
+    actualizarDatosBodega(bodega,idProductos);
 }
 
 int main()
