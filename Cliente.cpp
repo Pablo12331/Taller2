@@ -122,39 +122,29 @@ void Cliente::separarClientesPreferenciales(queue<Cliente*>& clientesPreferencia
     }
 }
 
-void Cliente::atencionClientePreferencial(Cliente* cliente)
+void Cliente::atencionCliente(Cliente* cliente, HashMap*& bodega, vector<int> idProductos)
 {
+    Producto* aux;
+    Producto* producto;
+    int compraTotal, idProducto;
+
+    string boleta = "\n---------- Boleta ----------" "\n----Tipo cliente: " 
+                    + cliente->getTipoCliente() + "\n----Numero cliente: " + to_string(cliente->getNumeroAtencion());
+
+    cout<<"\nProductos compra del cliente numero "<< cliente->getNumeroAtencion() <<": "<<endl;
+
+    idProducto = aux->verificarIdProducto(idProducto, idProductos);
+
+    producto = bodega->get(idProducto);
+    
+    boleta += "\n---------- Compra ----------"  "\nProducto: " + producto->getProducto() + " " + to_string(producto->getPrecioProducto());
 
 }
 
-void Cliente::atencionClienteNoPreferencial(Cliente* cliente)
+string Cliente::atenderClientes(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales, HashMap*& bodega, vector<int> idProductos)
 {
-
-}
-
-string Cliente::atenderCliente(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales)
-{
-    if(clientesPreferenciales.empty() && clientes.empty())
-    {
-        cout<<"No hay clientes en la fila."<<endl;
-        return nullptr;
-    }
-    if(!clientesPreferenciales.empty())
-    {
-        Cliente* cliente = clientesPreferenciales.front();
-        clientesPreferenciales.pop();
-        string boleta;
-        //Proceso aleatorio para determinar la compra (el cual se guarda como string en "boleta"), que posteriormente se mostrará en la boleta del punto 4.
-        return boleta;
-    }
-    if(!clientes.empty())
-    {
-        Cliente* cliente = clientes.front();
-        clientes.pop();
-        string boleta;
-        //Proceso aleatorio para determinar la compra (el cual se guarda como string en "boleta"), que posteriormente se mostrará en la boleta del punto 4.
-        return boleta;
-    }
+    string boleta;
+    
     return "";
 }
 

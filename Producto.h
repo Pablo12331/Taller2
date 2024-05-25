@@ -20,4 +20,5 @@ class Producto
         string getProducto();
         int getIdProducto();
         int getCantidadProducto();
+        int getPrecioProducto();
 };

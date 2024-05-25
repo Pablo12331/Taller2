@@ -55,7 +55,7 @@ bool Producto::verificarIdProducto(int& idProducto, vector<int> idProductos)
             }
         }
         cout<<"\nNo se encontro el ID escrito, por favor verifique el ID que escribio."<<endl;
-              
+
     }while(true);
 }
 
@@ -93,4 +93,7 @@ int Producto::getCantidadProducto()
     return this->cantidadProducto;
 }
 
-
+int Producto::getPrecioProducto()
+{
+    return this->precioProducto;
+}

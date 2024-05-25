@@ -37,14 +37,29 @@ void datosBodega(HashMap* &bodega, vector<int> idProductos)
     return;
 }
 
-void imprimirBoleta(string boleta)
+void atenderClientes(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales, HashMap*& bodega, vector<int> idProductos)
 {
-    cout<<"--------------Boleta--------------"<<endl;
-    cout<<""<<endl;
-
-
+    Cliente* aux;
+    if(clientesPreferenciales.empty() && clientes.empty())
+    {
+        cout<<"No hay clientes en la fila."<<endl;
+        return;
+    }
+    while(!clientes.empty() || !clientesPreferenciales.empty())
+    {
+        datosBodega(bodega, idProductos);
+        if(!clientesPreferenciales.empty())
+        {   
+            aux->atencionCliente(clientesPreferenciales.front(), bodega, idProductos);
+            clientesPreferenciales.pop();
+        }
+        else
+        {
+            aux->atencionCliente(clientes.front(), bodega, idProductos);
+            clientes.pop();
+        }
+    }
 }
-
 void reabastecerBodega(HashMap* &bodega, vector<int> idProductos)
 {
     Producto* aux;
@@ -84,13 +99,12 @@ int menu(HashMap*& bodega, vector<int> idProductos)
                 filas->entregaNumeroClientes(contPreferencial, contNoPreferencial, clientesPreferenciales, clientes);
                 break;
             case 2:
-                boletaActiva = filas->atenderCliente(clientes,clientesPreferenciales);
+                atenderClientes(clientes,clientesPreferenciales, bodega, idProductos);
                 break;
             case 3:
                 reabastecerBodega(bodega, idProductos);
                 break;
             case 4:
-                imprimirBoleta(boletaActiva);
                 break;
             case 5:
                 cout << "Saliendo del programa...\n";

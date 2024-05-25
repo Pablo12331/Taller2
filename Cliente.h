@@ -1,6 +1,9 @@
 #pragma once 
 #include <iostream>
 #include <queue>
+#include <vector>
+#include "HashMap.h"
+#include "Producto.h"
 
 using namespace std;
 
@@ -22,8 +25,7 @@ class Cliente
         int getNumeroAtencion();
         string getTipoCliente();
         void rellenarListaCompras();
-        string atenderCliente(queue<Cliente*>&, queue<Cliente*>&);
-        void atencionClientePreferencial(Cliente* cliente);
-        void atencionClienteNoPreferencial(Cliente* cliente);
+        string atenderClientes(queue<Cliente*>&, queue<Cliente*>&, HashMap*&, vector<int>);
+        void atencionCliente(Cliente*, HashMap*&, vector<int>);
         queue<int> getListaCompra();
 };
