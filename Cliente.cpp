@@ -164,13 +164,36 @@ void Cliente::atencionCliente(Cliente* cliente, HashMap*& bodega, vector<int> id
 
     } while(opcion == 1);
     
-    cout<<"\n¿Desea imprimir boleta?"
-        <<"\n1) Si"
-        <<"\n2) No"
-        <<"\nElija una de las opciones(Ejemplo: 1): ";
-    cin>>opcion2;
-    if(opcion2 == 1){cout<<boleta<<endl;}
-    else if(opcion2 == 2){cout<<"\nCliente atendido con exito....\n";}
+    do
+    {
+        cout<<"\n¿Desea imprimir boleta?"
+            <<"\n1) Si"
+            <<"\n2) No"
+            <<"\nElija una de las opciones(Ejemplo: 1): ";
+        cin>>opcion2;
+        if(opcion2 == 1){cout<<boleta<<endl;}
+
+        else if(opcion2 != 1 && opcion2 != 2)
+        {
+            cout<<"\nLa opcion seleccionada es incorrecta, por favor colocar una de las que aparece en pantalla.\n";
+        }
+    } while (opcion2 != 1 && opcion2 != 2);
+
+    cout<<"\nCliente atendido con exito....\n";
+
+    char enter;
+
+    do
+    {
+        cin.ignore();
+        
+        cout<<"PRESIONE ENTER PARA CONTINUAR";
+
+        enter = getchar();
+
+
+    } while (enter != '\n');
+    
 }
 
 string Cliente::getTipoCliente()
