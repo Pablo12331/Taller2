@@ -74,11 +74,6 @@ int Producto::agregarProducto(vector<int> idProductos, int& stockSuma)
     return idProducto;
 }
 
-Producto* Producto::productoRandom()
-{
-    return nullptr;
-}
-
 string Producto::getProducto()
 {
     return this->producto;
