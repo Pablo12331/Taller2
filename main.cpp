@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// Este método muestra los datos de los productos en la bodega, incluyendo su ID, nombre y cantidad en stock.
 void datosBodega(HashMap* &bodega, vector<int> idProductos)
 {
     cout<<"Lista de productos en bodega: "<<endl;
@@ -20,6 +21,7 @@ void datosBodega(HashMap* &bodega, vector<int> idProductos)
     return;
 }
 
+// Este método actualiza los datos de la bodega en el archivo "Productos.txt", eliminando los productos que han sido atendidos.
 void actualizarDatosBodega(HashMap* &bodega, vector<int> idProductos)
 {
     Producto* aux;
@@ -35,6 +37,7 @@ void actualizarDatosBodega(HashMap* &bodega, vector<int> idProductos)
     delete(aux);
 }
 
+// Este método gestiona la atención de clientes en la farmacia, atendiendo primero a los clientes preferenciales y luego a los clientes regulares, mostrando los datos de la bodega antes de cada atención.
 void atenderClientes(queue<Cliente*>& clientes, queue<Cliente*>& clientesPreferenciales, HashMap*& bodega, vector<int> idProductos)
 {
     Cliente* aux;
@@ -58,6 +61,8 @@ void atenderClientes(queue<Cliente*>& clientes, queue<Cliente*>& clientesPrefere
         }
     }
 }
+
+// Este método permite reabastecer la bodega con nuevos productos, solicitando al usuario la cantidad de productos a reabastecer y el ID de los productos a reabastecer.
 void reabastecerBodega(HashMap* &bodega, vector<int> idProductos)
 {
     Producto* aux;
@@ -74,6 +79,7 @@ void reabastecerBodega(HashMap* &bodega, vector<int> idProductos)
     cout<<"\nReabastecimiento completado..."<<endl;
 }
 
+// Este método muestra un menú al usuario y gestiona las opciones seleccionadas, llamando a las funciones correspondientes según la opción seleccionada.
 int menu(HashMap*& bodega, vector<int> idProductos)
 {
     //transformar los vectores en filas
@@ -112,6 +118,7 @@ int menu(HashMap*& bodega, vector<int> idProductos)
     return 0;
 }
 
+// Este método carga los datos de los productos desde el archivo "Productos.txt" en la bodega y en el vector de IDs de productos.
 void cargarDatosBodega(HashMap* &bodega, vector<int> &idProductos)
 {
     Producto* aux;
@@ -132,7 +139,7 @@ void cargarDatosBodega(HashMap* &bodega, vector<int> &idProductos)
     datosProductos.close();
 }
 
-
+// Este es el punto de entrada de la aplicación. Crea una instancia de la bodega, carga los datos de la bodega, muestra el menú al usuario y luego actualiza los datos de la bodega antes de finalizar.
 void farmacia()
 {
     vector<int> idProductos;
@@ -142,6 +149,7 @@ void farmacia()
     actualizarDatosBodega(bodega,idProductos);
 }
 
+// La función principal del programa, que llama a la función farmacia() para ejecutar la aplicación de la farmacia.
 int main()
 {
     farmacia();

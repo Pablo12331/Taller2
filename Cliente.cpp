@@ -9,8 +9,10 @@ Cliente::Cliente(string tipoCliente, int numeroAtencion)
     this ->numeroAtencion = numeroAtencion;
 } 
 
+//Destructor de la clase Cliente
 Cliente::~Cliente(){}
 
+//Este método solicita al usuario la cantidad de personas que hay y luego registra a cada una de ellas como cliente preferencial o no preferencial.
 void Cliente::entregaNumeroClientes(int& contPreferencial, int& contNoPreferencial, queue<Cliente*>& clientesPreferenciales, queue<Cliente*>& clientes)
 {
     int cantidadPersonas;
@@ -24,6 +26,7 @@ void Cliente::entregaNumeroClientes(int& contPreferencial, int& contNoPreferenci
     separarClientesPreferenciales(clientesPreferenciales);
 }
 
+//Este método registra a un cliente como preferencial o no preferencial según la elección del usuario.
 void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial, queue<Cliente*>& clientesPreferenciales, queue<Cliente*>& clientes)
 {
     int opcion;
@@ -51,6 +54,7 @@ void Cliente::registroClientes(int& contPreferencial, int& contNoPreferencial, q
     while(opcion != 1 && opcion != 2);
 }
 
+//Este método crea un nuevo cliente preferencial, solicitando al usuario el tipo de cliente preferencial.
 Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
 {
     int opcion;
@@ -82,6 +86,7 @@ Cliente* Cliente::nuevoClientePreferencial(int& contPreferencial)
     return nuevoCliente;
 }
 
+//Este método separa los clientes preferenciales en tres colas distintas según su tipo: tercera edad, discapacitados y embarazadas.
 void Cliente::separarClientesPreferenciales(queue<Cliente*>& clientesPreferenciales)
 {
     queue<Cliente*> terceraEdad, discapacitados, embarazadas;
@@ -122,6 +127,7 @@ void Cliente::separarClientesPreferenciales(queue<Cliente*>& clientesPreferencia
     }
 }
 
+//Este método simula la atención a un cliente. Solicita al cliente los productos que desea comprar, verifica si están disponibles en la bodega, calcula el total de la compra y permite imprimir una boleta si el cliente lo desea.
 void Cliente::atencionCliente(Cliente* cliente, HashMap*& bodega, vector<int> idProductos)
 {
     Producto* aux;
@@ -196,11 +202,14 @@ void Cliente::atencionCliente(Cliente* cliente, HashMap*& bodega, vector<int> id
     
 }
 
+//Este método devuelve el tipo de cliente (preferencial o no preferencial).
+
 string Cliente::getTipoCliente()
 {
     return this->tipoCliente;
 }
 
+//Este método devuelve el número de atención del cliente.
 int Cliente::getNumeroAtencion()
 {
     return this->numeroAtencion;

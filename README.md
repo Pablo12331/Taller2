@@ -125,15 +125,13 @@ Main:
 Hashmap:
 
         void HashMap::rehash();
-        // Este método duplica el tamaño de la tabla hash y reorganiza los elementos en función de la nueva capacidad,
-        // asegurándose de mantener el orden relativo de las claves.
+        // Este método duplica el tamaño de la tabla hash y reorganiza los elementos en función de la nueva capacidad, asegurándose de mantener el orden relativo de las claves.
 
         HashMap::HashMap(double maxLoadFactor);
         // Constructor de la clase HashMap con el factor de carga máximo especificado.
 
         void HashMap::insert(int key, Producto* value); 
-        // Este método inserta un nuevo par clave-valor en la tabla hash,
-        // realizando rehash si el factor de carga excede el límite establecido.
+        // Este método inserta un nuevo par clave-valor en la tabla hash, realizando rehash si el factor de carga excede el límite establecido.
 
         Producto* HashMap::get(int key);
         // Este método recupera el valor asociado con una clave dada en la tabla hash.

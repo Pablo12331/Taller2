@@ -18,6 +18,7 @@ Producto::Producto(string categoria, string subCategoria, string producto,
     this->cantidadProducto = cantidadProducto;
 }
 
+//Este método toma una cadena de datos de un producto y la descompone en sus componentes (categoría, subcategoría, nombre del producto, precio, ID y cantidad). Luego, crea un nuevo objeto Producto con estos datos y lo devuelve.
 Producto* Producto::ingresarProductos(string datosProducto)
 {
     string categoria, subCategoria, producto, precioProducto, idProducto, cantidadProducto;
@@ -35,13 +36,16 @@ Producto* Producto::ingresarProductos(string datosProducto)
     return productoIngresar;
 }
 
+//Destructor de la clase Producto.
 Producto::~Producto(){}
 
+//Este método actualiza la cantidad de stock del producto sumando la cantidad proporcionada como argumento a la cantidad actual.
 void Producto::setCantidadProducto(int stockSuma)
 {
     this->cantidadProducto = this->cantidadProducto + stockSuma;
 }
 
+//Este método solicita al usuario un ID de producto y verifica si ese ID está presente en la lista de IDs de productos existentes. Si el ID es válido, devuelve true; de lo contrario, solicita al usuario que ingrese un ID válido.
 bool Producto::verificarIdProducto(int& idProducto, vector<int> idProductos)
 {
     do
@@ -60,6 +64,7 @@ bool Producto::verificarIdProducto(int& idProducto, vector<int> idProductos)
     }while(true);
 }
 
+//Este método solicita al usuario el ID del producto que desea agregar y la cantidad de stock que se añadirá al producto. 
 int Producto::agregarProducto(vector<int> idProductos, int& stockSuma)
 {
     int idProducto;
@@ -74,32 +79,37 @@ int Producto::agregarProducto(vector<int> idProductos, int& stockSuma)
     return idProducto;
 }
 
+//Este método devuelve el nombre del producto.
+
 string Producto::getProducto()
 {
     return this->producto;
 }
 
+//Este método devuelve el ID del producto.
 int Producto::getIdProducto()
 {
     return this->idProducto;
 }
 
+//Este método devuelve la cantidad de stock del producto.
 int Producto::getCantidadProducto()
 {
     return this->cantidadProducto;
 }
 
+//Este método devuelve el precio del producto.
 int Producto::getPrecioProducto()
 {
     return this->precioProducto;
 }
-
+//Este método devuelve una cadena que contiene toda la información del producto en un formato específico.
 string Producto::informacionProducto()
 {
     return this->categoria + "," + this->subCategoria + "," + this->producto + "," + to_string(this->precioProducto) +
           "," + to_string(this->idProducto) + "," + to_string(this->cantidadProducto);
 }
-
+//Este método actualiza el archivo de texto que almacena la información de los productos. Toma una cadena que representa toda la información de los productos y la escribe en el archivo "Productos.txt", sobrescribiendo su contenido anterior.
 void Producto::actualizarProductos(string productos)
 {
     ofstream datosProductos("Productos.txt", ios::out);
